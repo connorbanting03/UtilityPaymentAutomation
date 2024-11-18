@@ -13,17 +13,18 @@ All required packages are listed in `requirements.txt`.
 
 ```bash
 # Clone the repository (if applicable)
-git clone https://github.com/your-repo/project.git
-cd project
+git clone https://github.com/connorbanting03/UtilityPaymentAutomation
+
 
 # Create a virtual environment
 python3.12 -m venv BillPayEnv
 
 # Activate the virtual environment
-# On Windows:
-venv\Scripts\activate
 # On macOS/Linux:
 source BillPayEnv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
+
+#In .env file 
+Please fill in your credentials  

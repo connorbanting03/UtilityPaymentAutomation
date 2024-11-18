@@ -1,17 +1,16 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from dotenv import load_dotenv
 import time
+import tools
+import os
 
 
 class EnercarePayBot:
-    def __init__(self, email, password, card_number, card_name):
-        self.email = email
-        self.password = password
+    def __init__(self):
+        self.email = os.getenv("EMAIL")
+        self.password = os.getenv("ENERCARE_PASSWORD")
         self.driver = webdriver.Chrome()
-        self.card_number = card_number
-        self.card_name = card_name
 
     def open_login_page(self):
         self.driver.get(
@@ -20,16 +19,16 @@ class EnercarePayBot:
         self.driver.implicitly_wait(5)
 
     def sign_in(self):
+        tools.wait_for_element_with_ID(self.driver, "signInName")
         self.driver.find_element(By.ID, "signInName").send_keys(self.email)
+        tools.wait_for_element_with_ID(self.driver, "password")
         self.driver.find_element(By.ID, "password").send_keys(self.password)
+        tools.wait_till_button_can_be_clicked(self.driver, "next")
         self.driver.find_element(By.ID, "next").click()
+        time.sleep(10)
 
     def pay_bill(self):
-        time.sleep(10)
         self.driver.get("https://mybilling.enercare.ca/s/make-a-payment?idx=0")
-       
-
-       
 
     def run(self):
         self.open_login_page()
@@ -39,11 +38,6 @@ class EnercarePayBot:
 
 
 if __name__ == "__main__":
-    email = ""
-    password = ""
-    card_name = ""
-    card_number = ""
-
-    login_bot = EnercarePayBot(email, password, card_number, card_name)
+    load_dotenv()
+    login_bot = EnercarePayBot()
     login_bot.run()
-
