@@ -11,7 +11,6 @@ All required packages are listed in `requirements.txt`.
 
 ### Setup Instructions
 
-```bash
 # Clone the repository (if applicable)
 git clone https://github.com/connorbanting03/UtilityPaymentAutomation
 
@@ -26,5 +25,5 @@ source BillPayEnv/bin/activate
 # Install dependencies
 pip install -r requirements.txt
 
-#In .env file 
+# In .env file 
 Please fill in your credentials  
