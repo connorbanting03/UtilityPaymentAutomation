@@ -34,7 +34,7 @@ class EnercarePayBot:
         self.open_login_page()
         self.sign_in()
         self.pay_bill()
-        time.sleep(1000)
+        time.sleep(5)
 
 
 if __name__ == "__main__":

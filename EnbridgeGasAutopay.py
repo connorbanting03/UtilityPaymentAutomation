@@ -27,14 +27,14 @@ class EnbridgeGasPayBot:
         self.driver.find_element(By.ID, "ctl00_BodyPlaceholder_SOLDTO6").send_keys(
             self.postal_code
         )
-        tools.wait_till_button_can_be_clicked(
-            self.driver, "ctl00_BodyPlaceholder_btnLookUp"
-        )
-        self.driver.find_element(By.ID, "ctl00_BodyPlaceholder_SOLDTO6").click()
+        time.sleep(5)
+
+       
+                
 
     def run(self):
-        login_bot.open_login_page()
-        login_bot.populate_login()
+        self.open_login_page()
+        self.populate_login()
 
 
 if __name__ == "__main__":
@@ -42,3 +42,7 @@ if __name__ == "__main__":
     login_bot = EnbridgeGasPayBot()
     login_bot.run()
     time.sleep(10)
+
+
+#<input type="submit" name="ctl00$BodyPlaceholder$btnLookUp" value="Look Up" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$BodyPlaceholder$btnLookUp&quot;, &quot;&quot;, true, &quot;OTPValidationGrp&quot;, &quot;&quot;, false, false))" id="ctl00_BodyPlaceholder_btnLookUp" class="button next w-inline-block" style="border-style:None;">
+#<a id="ctl00_BodyPlaceholder_btnBack" href="#" class="button back w-inline-block" onclick="javascript:window.history.back(); return false;" onkeypress="javascript:window.history.back(); return false;" style="visibility: hidden">Back</a>
